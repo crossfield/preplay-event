@@ -1,3 +1,5 @@
+require 'shellwords'
+
 module PrePlay
 
   def self.Event(event_type, data = {}, context = {}, opts = nil)
@@ -83,7 +85,7 @@ module PrePlay
     end
 
     def self.parse(log_line)
-      data = Shellwords.shellsplit(log_line)
+      data = ::Shellwords.shellsplit(log_line)
       from_hash Hash[data.map{|el| el.split('=')}]
     end
 
